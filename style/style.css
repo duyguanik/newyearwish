@@ -21,38 +21,42 @@ html, body {
     width: 100vw;
     display: flex;
     justify-content: center;
-    align-items: center; /* İçeriği dikeyde ve yatayda TAM ORTALAR */
+    align-items: center; /* Dikeyde tam merkezleme */
     text-align: center;
     visibility: hidden;
     position: relative;
     background: radial-gradient(circle at center, #1a2a3a 0%, #0a0e14 100%);
 }
 
-/* Sayfa bölümleri */
+/* Sayfa bölümleri - Üst üste binmeyi engellemek için */
 .container > div {
     position: absolute;
     width: 100%;
-    padding: 0 15px;
-    top: 50%; /* Sayfayı dikeyde ortalar */
-    transform: translateY(-50%); /* Tam merkezleme ayarı */
+    max-width: 800px;
+    padding: 0 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Tam merkezleme */
 }
 
-/* Başlık stilleri */
+/* Başlık ve "İyi ki hayatımdasın" */
 .one {
-    font-size: 4.5rem;
+    font-size: 5rem; /* İsmi büyüttük */
     font-family: 'Dancing Script', cursive;
     color: #f1c40f;
-    text-shadow: 0 0 20px rgba(241, 196, 15, 0.4);
+    margin-bottom: 15px;
 }
 
 .two {
-    font-size: 1.8rem;
+    font-size: 2.5rem; /* İSTEDİĞİN GİBİ BÜYÜTTÜK */
     font-weight: 300;
-    margin-top: 10px;
+    color: #ecf0f1;
+    display: block;
+    margin-top: 20px;
 }
 
 .three {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-family: 'Dancing Script', cursive;
     color: #e74c3c;
 }
@@ -60,120 +64,73 @@ html, body {
 /* Mesaj Kutusu */
 .four .text-box {
     width: 90%;
-    max-width: 550px;
+    max-width: 600px;
     margin: 0 auto;
     border: 3px solid #f1c40f;
     border-radius: 20px;
-    padding: 30px;
+    padding: 40px;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    position: relative;
 }
 
 .text-box p {
-    font-size: 1.4rem;
-    line-height: 1.6;
+    font-size: 1.8rem; /* Kutudaki metni büyüttük */
+    line-height: 1.5;
     text-align: left;
 }
 
-.text-box .fake-btn {
-    position: absolute;
-    right: 20px;
-    bottom: 10px;
-    background: #f1c40f;
-    color: #000;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: bold;
-}
-
-/* Gün Sayacı Alanı - Üst üste binmeyi burada çözdük */
-.five {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
+/* Gün Sayacı */
 .five p {
-    position: relative; /* Absolute yerine relative yaparak alt alta dizilmelerini sağladık */
-    margin: 10px 0;
-    font-size: 2.2rem;
+    font-size: 2.5rem; /* Metinleri büyüttük */
+    margin: 15px 0;
 }
 
-.idea-5 {
+.five .idea-5 {
+    font-size: 4rem !important;
     font-family: 'Dancing Script', cursive;
-    font-size: 3.5rem !important;
     color: #f1c40f;
 }
 
-/* DEV GÜN SAYISI */
 .idea-6 span:first-child {
-    display: block;
-    font-size: 10rem;
+    font-size: 12rem; /* 73 sayısını iyice büyüttük */
     font-weight: 700;
-    line-height: 1;
-    margin-bottom: 5px;
+    display: block;
 }
 
 .idea-6 span:last-child {
-    font-size: 2rem;
-    letter-spacing: 8px;
+    font-size: 2.5rem;
     color: #f1c40f;
+    letter-spacing: 10px;
 }
 
 /* Fotoğraf ve Final */
 .six img {
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
     border-radius: 50%;
-    border: 6px solid #f1c40f;
-    box-shadow: 0 0 40px rgba(241, 196, 15, 0.4);
-    margin-bottom: 20px;
+    border: 8px solid #f1c40f;
+    margin-bottom: 30px;
 }
 
 .wish-hbd {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-family: 'Dancing Script', cursive;
     color: #e74c3c;
 }
 
-/* Balonlar */
-.baloons img {
-    position: absolute;
-    width: 120px;
-    z-index: 10;
-}
-
-/* Tekrar Oynat */
-#replay {
-    color: #f1c40f;
-    cursor: pointer;
-    text-decoration: underline;
-    font-size: 1.2rem;
-}
-
-/* --- MOBİL UYUMLULUK (Responsive) --- */
-@media screen and (max-width: 600px) {
-    .one { font-size: 3rem; }
-    .two { font-size: 1.4rem; }
-    .three { font-size: 2.5rem; }
-    
-    .text-box p { font-size: 1.1rem; }
-    
-    .five p { font-size: 1.6rem; }
-    .idea-5 { font-size: 2.5rem !important; }
-    .idea-6 span:first-child { font-size: 6rem; }
-    .idea-6 span:last-child { font-size: 1.5rem; }
-    
-    .six img { width: 200px; height: 200px; }
-    .wish-hbd { font-size: 2.5rem; }
-}
-
-/* Siyah daireleri tamamen kapatan güvenlik kodu */
+/* Siyah daireleri yok eden güvenlik */
 .eight, .eight svg {
-    display: none;
-    opacity: 0;
-    visibility: hidden;
+    display: none !important;
+}
+
+/* MOBİL UYUMLULUK */
+@media screen and (max-width: 600px) {
+    .one { font-size: 3.5rem; }
+    .two { font-size: 1.8rem; }
+    .three { font-size: 2.5rem; }
+    .text-box p { font-size: 1.3rem; }
+    .five p { font-size: 1.6rem; }
+    .idea-6 span:first-child { font-size: 8rem; }
+    .six img { width: 220px; height: 220px; }
 }
