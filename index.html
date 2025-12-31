@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mutlu Yıllar Furkan! ❤️</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Work+Sans:wght@300;600&display=swap" rel="stylesheet">
     
     <style>
@@ -14,27 +15,28 @@
         .section { position: absolute; width: 100%; padding: 20px; opacity: 0; visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         
         h1, .wish-hbd { font-family: 'Dancing Script', cursive; color: #f1c40f; font-size: 4rem; text-shadow: 0 0 15px rgba(241, 196, 15, 0.4); }
-        .two { font-size: 2rem; margin-top: 15px; color: #ecf0f1; font-weight: 300; }
+        .two { font-size: 2rem; margin-top: 15px; color: #ecf0f1; font-weight: 300; line-height: 1.4; }
+        .special { color: #f1c40f; font-weight: 600; }
         
-        /* Mesaj Kutusu Düzenlemesi */
+        /* Mesaj Kutusu */
         .text-box { width: 90%; max-width: 550px; border: 3px solid #f1c40f; border-radius: 20px; padding: 35px; background: rgba(255,255,255,0.05); position: relative; text-align: left; }
-        .hbd-chatbox { font-size: 1.5rem; line-height: 1.4; min-height: 80px; color: white; visibility: visible !important; opacity: 1 !important; }
+        .hbd-chatbox { font-size: 1.5rem; line-height: 1.4; min-height: 80px; color: white; }
         .fake-btn { position: absolute; right: 20px; bottom: 10px; background: #f1c40f; color: #000; padding: 5px 15px; border-radius: 10px; font-weight: bold; opacity: 0; }
         
-        /* Sayaç ve Yazılar */
+        /* Sayaç */
         .idea-5 { font-size: 3rem; color: #f1c40f; font-family: 'Dancing Script', cursive; margin-bottom: 15px; }
         #dayCountDisplay { font-size: 8rem; font-weight: 700; display: block; line-height: 1; color: white; margin-bottom: 10px; }
-        .gun-yazi { font-size: 1.5rem; letter-spacing: 1px; color: #f1c40f; font-weight: 600; line-height: 1.4; display: block; }
+        .gun-yazi { font-size: 1.4rem; letter-spacing: 1px; color: #f1c40f; font-weight: 600; line-height: 1.4; display: block; max-width: 80%; margin: 0 auto; }
         
         #replay { color: #f1c40f; cursor: pointer; text-decoration: underline; margin-top: 30px; font-size: 1.2rem; }
         
-        @media (max-width: 600px) { h1 { font-size: 2.5rem; } #dayCountDisplay { font-size: 5.5rem; } .two { font-size: 1.4rem; } .hbd-chatbox { font-size: 1.2rem; } }
+        @media (max-width: 600px) { h1 { font-size: 2.5rem; } #dayCountDisplay { font-size: 5.5rem; } .two { font-size: 1.4rem; } }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="section" id="step1">
-            <h1>Selam Furkan</h1>
+            <h1>Selam Furkan 😝​</h1>
             <p class="two">İyi ki hayatımdasın!</p>
         </div>
 
@@ -50,11 +52,15 @@
         </div>
 
         <div class="section" id="step4">
-            <p class="two">Sana sıradan bir mesaj atacaktım...</p>
+            <p class="two">Aslında sana böyle bir mesaj atacaktım...</p>
         </div>
 
-        <div class="section" id="step5">
-            <p class="two" style="color: #f1c40f; font-weight: 600;">Ama sonra senin ne kadar özel olduğunu hatırladım ve özel bir şey yapmak istedim. ✨</p>
+        <div class="section" id="step5a">
+            <p class="two special">Ama sonra senin ne kadar özel olduğunu hatırladım ✨</p>
+        </div>
+
+        <div class="section" id="step5b">
+            <p class="two">ve senin için bu havalı websitesini yapmak istedim. 🎊</p>
         </div>
 
         <div class="section" id="step6">
@@ -70,14 +76,13 @@
         </div>
 
         <div class="section" id="step8">
-            <h3 class="wish-hbd">Mutlu Yıllar Canım!</h3>
-            <p class="two">Seni çok seviyorum.</p>
-            <p id="replay">Tekrar izle ❤️</p>
+            <h3 class="wish-hbd">Mutlu Yıllar Canım! Birlikte nice mutlu yıllara girelim 😘​</h3>
+            <p class="two">Seni çok ama çok seviyorum.</p>
+            <p id="replay">Tekrar izlemek için tıkla ❤️</p>
         </div>
     </div>
 
     <script>
-        // Metinler ve Ayarlar
         const messageText = "Yeni yıl sana huzur, mutluluk, sağlık ve başarı getirsin sevgilim. Her günün bir öncekinden daha güzel olsun...";
         const startDate = new Date("2025-10-20");
         const diffDays = Math.ceil(Math.abs(new Date() - startDate) / (1000 * 60 * 60 * 24));
@@ -85,41 +90,46 @@
 
         const tl = new TimelineMax();
 
-        // Animasyon Akışı
         tl.to(".container", 0.5, { visibility: "visible" })
           .to("#step1", 1, { opacity: 1, visibility: "visible" })
-          .to("#step1", 1, { opacity: 0, y: -20 }, "+=2.5")
+          .to("#step1", 1, { opacity: 0, y: -20 }, "+=2")
           
           .to("#step2", 1, { opacity: 1, visibility: "visible" })
-          .to("#step2", 1, { opacity: 0, scale: 0.8 }, "+=2")
+          .to("#step2", 1, { opacity: 0 }, "+=2")
           
-          // Mesaj Kutusu ve Yazma Efekti
           .to("#step3", 1, { opacity: 1, visibility: "visible" })
           .add(() => {
-              let i = 0;
+              let i = 0; document.getElementById("typewriter").innerHTML = "";
               const type = () => {
                   if (i < messageText.length) {
                       document.getElementById("typewriter").innerHTML += messageText.charAt(i);
-                      i++;
-                      setTimeout(type, 50);
+                      i++; setTimeout(type, 40);
                   }
               };
               type();
           })
-          .to("#sendBtn", 0.5, { opacity: 1, scale: 1.1 }, "+=6") // Yazma süresine göre bekleme
+          .to("#sendBtn", 0.5, { opacity: 1 }, "+=5.5")
           .to("#step3", 1, { opacity: 0, y: 50 }, "+=1.5")
           
           .to("#step4", 1, { opacity: 1, visibility: "visible" })
-          .to("#step4", 1, { opacity: 0 }, "+=2.5")
+          .to("#step4", 1, { opacity: 0 }, "+=2")
           
-          .fromTo("#step5", 1.2, { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, visibility: "visible", ease: Back.easeOut })
-          .to("#step5", 1, { opacity: 0, y: 20 }, "+=3")
+          // Sayfa 5a
+          .to("#step5a", 1, { opacity: 1, visibility: "visible" })
+          .to("#step5a", 1, { opacity: 0 }, "+=2.5")
+          
+          // Sayfa 5b + KONFETİ
+          .to("#step5b", 1, { opacity: 1, visibility: "visible" })
+          .add(() => {
+              confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#f1c40f', '#ffffff', '#e74c3c'] });
+          })
+          .to("#step5b", 1, { opacity: 0 }, "+=3")
           
           .to("#step6", 1, { opacity: 1, visibility: "visible" })
           .to("#step6", 1, { opacity: 0, y: -30 }, "+=2.5")
           
           .to("#step7", 1, { opacity: 1, visibility: "visible" })
-          .from("#dayCountDisplay", 2, { innerText: 0, roundProps: "innerText" }, "-=0.5")
+          .from("#dayCountDisplay", 2, { innerText: 0, roundProps: "innerText" })
           .to("#step7", 1, { opacity: 0 }, "+=4")
           
           .to("#step8", 1, { opacity: 1, visibility: "visible" });
