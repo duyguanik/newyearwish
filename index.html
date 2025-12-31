@@ -31,7 +31,7 @@
         .section { 
             position: absolute; 
             width: 100%; 
-            padding: 0 20px; 
+            padding: 0 15px; 
             opacity: 0; 
             visibility: hidden; 
             display: flex; 
@@ -43,34 +43,34 @@
         h1, .wish-hbd { 
             font-family: 'Dancing Script', cursive; 
             color: #f1c40f; 
-            font-size: clamp(2.5rem, 8vw, 4.5rem); 
+            font-size: clamp(2.4rem, 8vw, 4.5rem); 
             text-shadow: 0 0 15px rgba(241, 196, 15, 0.4); 
+            line-height: 1.2;
         }
         .two { 
-            font-size: clamp(1.2rem, 5vw, 2.2rem); 
+            font-size: clamp(1.1rem, 4.5vw, 2.2rem); 
             margin-top: 15px; 
             color: #ecf0f1; 
             font-weight: 300; 
             line-height: 1.4;
-            max-width: 90%;
+            max-width: 95%;
         }
         .special { color: #f1c40f; font-weight: 600; }
         
-        /* Mobil Uyumlu Mesaj Kutusu */
         .text-box { 
-            width: 95%; 
-            max-width: 550px; 
+            width: 92%; 
+            max-width: 500px; 
             border: 2px solid #f1c40f; 
             border-radius: 20px; 
-            padding: clamp(15px, 5vw, 35px); 
+            padding: clamp(20px, 6vw, 35px); 
             background: rgba(255,255,255,0.05); 
             position: relative; 
             text-align: left; 
         }
         .hbd-chatbox { 
-            font-size: clamp(1rem, 4vw, 1.6rem); 
+            font-size: clamp(0.95rem, 4vw, 1.5rem); 
             line-height: 1.5; 
-            min-height: 100px; 
+            min-height: 90px; 
             color: white; 
             white-space: pre-wrap; 
         }
@@ -83,28 +83,26 @@
             padding: 4px 12px; 
             border-radius: 8px; 
             font-weight: bold; 
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             opacity: 0; 
         }
         
-        /* Mobil Uyumlu Sayaç */
         #dayCountDisplay { 
-            font-size: clamp(4.5rem, 20vw, 10rem); 
+            font-size: clamp(4rem, 22vw, 9rem); 
             font-weight: 700; 
             display: block; 
             line-height: 0.9; 
             color: white; 
-            margin-bottom: 5px; 
+            margin-bottom: 10px; 
         }
         .gun-yazi { 
-            font-size: clamp(0.9rem, 3.5vw, 1.5rem); 
-            letter-spacing: 1px; 
+            font-size: clamp(0.85rem, 3.8vw, 1.4rem); 
+            letter-spacing: 0.5px; 
             color: #f1c40f; 
             font-weight: 600; 
             display: block; 
-            max-width: 95%; 
-            margin: 0 auto; 
-            line-height: 1.3;
+            line-height: 1.4;
+            padding: 0 10px;
         }
         
         #replay { 
@@ -112,61 +110,62 @@
             cursor: pointer; 
             text-decoration: underline; 
             margin-top: 25px; 
-            font-size: 1rem; 
+            font-size: 0.9rem; 
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="section" id="step1">
-            <h1>Selam Furkan</h1>
-            <p class="two">İyi ki hayatımdasın!</p>
-        </div>
-
-        <div class="section" id="step2">
-            <h1>Yeni Yılımız Kutlu Olsun!!! 🎄</h1>
-        </div>
-
+        <div class="section" id="step1"></div>
+        <div class="section" id="step2"></div>
         <div class="section" id="step3">
             <div class="text-box">
                 <p class="hbd-chatbox" id="typewriter"></p>
                 <p class="fake-btn" id="sendBtn">Gönder</p>
             </div>
         </div>
-
-        <div class="section" id="step4">
-            <p class="two">Sana sıradan bir mesaj atacaktım...</p>
-        </div>
-
-        <div class="section" id="step5a">
-            <p class="two special">Ama sonra senin ne kadar özel olduğunu hatırladım ✨</p>
-        </div>
-
-        <div class="section" id="step5b">
-            <p class="two">ve senin için bu havalı websitesini yapmak istedim. 🎊</p>
-        </div>
-
-        <div class="section" id="step6">
-            <p class="two">Bizim hikayemiz...</p>
-            <h2 style="font-family: 'Dancing Script'; color: #f1c40f; font-size: clamp(2rem, 7vw, 3.5rem);">20 Ekim 2025'te başladı ❤️</h2>
-        </div>
-
+        <div class="section" id="step4"></div>
+        <div class="section" id="step5a"></div>
+        <div class="section" id="step5b"></div>
+        <div class="section" id="step6"></div>
         <div class="section" id="step7">
             <div>
                 <span id="dayCountDisplay">0</span>
-                <span class="gun-yazi">GÜNDÜR BENİMLE OLDUĞUN İÇİN TEŞEKKÜR EDERİM!!!</span>
+                <span class="gun-yazi" id="thankYouText"></span>
             </div>
         </div>
-
-        <div class="section" id="step8">
-            <h3 class="wish-hbd">Mutlu Yıllar Canım!</h3>
-            <p class="two">Seni çok seviyorum.</p>
-            <p id="replay">Tekrar izle ❤️</p>
-        </div>
+        <div class="section" id="step8"></div>
     </div>
 
     <script>
-        const messageText = "Yeni yıl sana huzur, mutluluk, sağlık ve başarı getirsin sevgilim. Her günün bir öncekinden daha güzel olsun...";
+        // TÜM METİNLERİ BURADAN KONTROL ET:
+        const texts = {
+            step1_h1: "Selam Furkan 😝​😘​",
+            step1_p: "İyi ki hayatımdasın!",
+            step2_h1: "Yeni Yılımız Kutlu Olsun!!! 🎄",
+            typewriter: "Yeni yıl sana huzur, mutluluk, sağlık ve başarı getirsin sevgilim. Her günün bir öncekinden daha güzel olsun...",
+            step4_p: "Aslında sana böyle bir mesaj atacaktım...",
+            step5a_p: "Ama sonra senin ne kadar özel olduğunu hatırladım ✨",
+            step5b_p: "ve senin için bu havalı websitesini yapmak istedim. 🎊",
+            step6_p: "Bizim hikayemiz...",
+            step6_h2: "20 Ekim 2025'te başladı ❤️",
+            thankYou: "GÜNDÜR BENİMLE OLDUĞUN İÇİN TEŞEKKÜR EDERİM!!!",
+            final_h3: "Mutlu Yıllar Canım, birlikte nice mutlu yıllara girelim 🥰​😍​",
+            final_p: "Seni çok seviyorum.",
+            replay: "Tekrar izlemek için tıkla ❤️"
+        };
+
+        // HTML'i Metinlerle Doldur
+        document.getElementById("step1").innerHTML = `<h1>${texts.step1_h1}</h1><p class="two">${texts.step1_p}</p>`;
+        document.getElementById("step2").innerHTML = `<h1>${texts.step2_h1}</h1>`;
+        document.getElementById("step4").innerHTML = `<p class="two">${texts.step4_p}</p>`;
+        document.getElementById("step5a").innerHTML = `<p class="two special">${texts.step5a_p}</p>`;
+        document.getElementById("step5b").innerHTML = `<p class="two">${texts.step5b_p}</p>`;
+        document.getElementById("step6").innerHTML = `<p class="two">${texts.step6_p}</p><h2 style="font-family: 'Dancing Script'; color: #f1c40f; font-size: 2.5rem;">${texts.step6_h2}</h2>`;
+        document.getElementById("thankYouText").innerText = texts.thankYou;
+        document.getElementById("step8").innerHTML = `<h3 class="wish-hbd">${texts.final_h3}</h3><p class="two">${texts.final_p}</p><p id="replay">${texts.replay}</p>`;
+
+        // Gün Hesaplama
         const startDate = new Date("2025-10-20");
         const diffDays = Math.ceil(Math.abs(new Date() - startDate) / (1000 * 60 * 60 * 24));
         document.getElementById("dayCountDisplay").innerText = diffDays;
@@ -176,49 +175,31 @@
         tl.to(".container", 0.5, { visibility: "visible" })
           .to("#step1", 1, { opacity: 1, visibility: "visible" })
           .to("#step1", 1, { opacity: 0, y: -20 }, "+=2.2")
-          
           .to("#step2", 1, { opacity: 1, visibility: "visible" })
           .to("#step2", 1, { opacity: 0 }, "+=2")
-          
           .to("#step3", 1, { opacity: 1, visibility: "visible" })
           .add(() => {
-              let i = 0;
-              const typewriterElement = document.getElementById("typewriter");
-              typewriterElement.innerHTML = "";
-              function type() {
-                  if (i < messageText.length) {
-                      typewriterElement.innerHTML += messageText.charAt(i);
-                      i++;
-                      setTimeout(type, 45); 
-                  }
-              }
+              let i = 0; const tw = document.getElementById("typewriter"); tw.innerHTML = "";
+              function type() { if (i < texts.typewriter.length) { tw.innerHTML += texts.typewriter.charAt(i); i++; setTimeout(type, 45); } }
               type();
           })
           .to("#sendBtn", 0.5, { opacity: 1 }, "+=5.8") 
           .to("#step3", 1, { opacity: 0, y: 50 }, "+=1.8")
-          
           .to("#step4", 1, { opacity: 1, visibility: "visible" })
           .to("#step4", 1, { opacity: 0 }, "+=2.2")
-          
           .to("#step5a", 1, { opacity: 1, visibility: "visible" })
           .to("#step5a", 1, { opacity: 0 }, "+=2.5")
-          
           .to("#step5b", 1, { opacity: 1, visibility: "visible" })
-          .add(() => {
-              confetti({ particleCount: 100, spread: 60, origin: { y: 0.7 } });
-          })
+          .add(() => { confetti({ particleCount: 100, spread: 60, origin: { y: 0.7 } }); })
           .to("#step5b", 1, { opacity: 0 }, "+=3.2")
-          
           .to("#step6", 1, { opacity: 1, visibility: "visible" })
           .to("#step6", 1, { opacity: 0, y: -30 }, "+=3")
-          
           .to("#step7", 1, { opacity: 1, visibility: "visible" })
           .from("#dayCountDisplay", 2.2, { innerText: 0, roundProps: "innerText" })
           .to("#step7", 1, { opacity: 0 }, "+=4.5")
-          
           .to("#step8", 1, { opacity: 1, visibility: "visible" });
 
-        document.getElementById("replay").onclick = () => location.reload();
+        document.addEventListener("click", function(e){ if(e.target && e.target.id == "replay"){ location.reload(); } });
     </script>
 </body>
 </html>
