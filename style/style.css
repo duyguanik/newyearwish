@@ -1,200 +1,179 @@
-/* Google Fonts - Şık bir font ekleyelim */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Work+Sans:wght@300;400;600&display=swap');
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Work+Sans:wght@300;400;700&display=swap');
 
-html {
+* {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body {
-    margin: 0;
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: #0a0e14;
     font-family: "Work Sans", sans-serif;
-    background-color: #0a0e14; /* Gece mavisi arka plan */
+    overflow: hidden;
     color: #ffffff;
-    overflow: hidden; /* Kaydırma çubuklarını gizler */
 }
 
 .container {
     height: 100vh;
-    width: 100%; /* 100vh hatasını düzelttik */
-    margin: 0 auto;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* İçeriği dikeyde ve yatayda TAM ORTALAR */
     text-align: center;
-    visibility: hidden; /* Animasyon başlayana kadar gizli tutar */
+    visibility: hidden;
     position: relative;
-    overflow: hidden;
     background: radial-gradient(circle at center, #1a2a3a 0%, #0a0e14 100%);
 }
 
-/* Tüm bölümlerin genel yerleşimi */
+/* Sayfa bölümleri */
 .container > div {
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 25vh;
-    padding: 0 20px;
+    width: 100%;
+    padding: 0 15px;
+    top: 50%; /* Sayfayı dikeyde ortalar */
+    transform: translateY(-50%); /* Tam merkezleme ayarı */
 }
 
-/* Giriş metinleri */
+/* Başlık stilleri */
 .one {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     font-family: 'Dancing Script', cursive;
-    color: #f1c40f; /* Altın Sarısı */
-    text-shadow: 0 0 15px rgba(241, 196, 15, 0.4);
+    color: #f1c40f;
+    text-shadow: 0 0 20px rgba(241, 196, 15, 0.4);
 }
 
 .two {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     font-weight: 300;
-    color: #ecf0f1;
+    margin-top: 10px;
 }
 
 .three {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-family: 'Dancing Script', cursive;
-    color: #e74c3c; /* Yılbaşı Kırmızısı */
+    color: #e74c3c;
 }
 
-/* Mesaj Kutusu Stili */
+/* Mesaj Kutusu */
 .four .text-box {
     width: 90%;
-    max-width: 500px;
+    max-width: 550px;
     margin: 0 auto;
-    border: 2px solid #f1c40f;
-    border-radius: 15px;
-    padding: 20px;
-    position: relative;
+    border: 3px solid #f1c40f;
+    border-radius: 20px;
+    padding: 30px;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    position: relative;
 }
 
 .text-box p {
-    margin: 0;
-    text-align: left;
+    font-size: 1.4rem;
     line-height: 1.6;
-    font-size: 1.1rem;
-}
-
-.text-box span {
-    visibility: hidden; /* Harf harf gelmesi için */
+    text-align: left;
 }
 
 .text-box .fake-btn {
     position: absolute;
-    right: 15px;
+    right: 20px;
     bottom: 10px;
+    background: #f1c40f;
     color: #000;
-    background-color: #f1c40f;
     padding: 5px 15px;
     border-radius: 20px;
     font-weight: bold;
-    font-size: 0.8rem;
 }
 
-/* Özel Mesajlar ve Gün Sayacı */
+/* Gün Sayacı Alanı - Üst üste binmeyi burada çözdük */
+.five {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .five p {
-    font-size: 1.8rem;
-    position: absolute;
-    left: 0;
-    right: 0;
+    position: relative; /* Absolute yerine relative yaparak alt alta dizilmelerini sağladık */
+    margin: 10px 0;
+    font-size: 2.2rem;
 }
 
-.idea-3 strong {
-    background-color: #e74c3c;
-    padding: 2px 10px;
-    border-radius: 5px;
-}
-
-.five .idea-5 {
-    font-size: 2.5rem;
+.idea-5 {
     font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem !important;
     color: #f1c40f;
 }
 
 /* DEV GÜN SAYISI */
 .idea-6 span:first-child {
     display: block;
-    font-size: 8rem;
+    font-size: 10rem;
     font-weight: 700;
-    color: #ffffff;
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    line-height: 1;
+    margin-bottom: 5px;
 }
 
 .idea-6 span:last-child {
-    font-size: 1.8rem;
-    letter-spacing: 5px;
+    font-size: 2rem;
+    letter-spacing: 8px;
     color: #f1c40f;
 }
 
-/* Final Ekranı */
-.six {
-    top: 15vh !important;
-}
-
+/* Fotoğraf ve Final */
 .six img {
-    display: inline-block;
-    max-width: 250px;
-    height: 250px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid #f1c40f;
-    box-shadow: 0 0 30px rgba(241, 196, 15, 0.3);
+    border: 6px solid #f1c40f;
+    box-shadow: 0 0 40px rgba(241, 196, 15, 0.4);
+    margin-bottom: 20px;
 }
 
 .wish-hbd {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-family: 'Dancing Script', cursive;
-    margin: 20px 0 10px;
     color: #e74c3c;
-}
-
-.wish-hbd span {
-    display: inline-block;
-}
-
-.wish h5 {
-    font-weight: 300;
-    font-size: 1.3rem;
-    color: #bdc3c7;
-    margin: 0;
 }
 
 /* Balonlar */
 .baloons img {
     position: absolute;
-    width: 100px;
-    z-index: 2;
+    width: 120px;
+    z-index: 10;
 }
 
-/* Arka Plandaki Parlamalar (Eski Siyah Daireler Burası) */
-.eight svg {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    visibility: hidden;
-    z-index: -1;
-}
-
-/* Dairelere yeni yıl renkleri verelim */
-.eight svg:nth-child(1) { fill: #e74c3c; left: 5vw; top: 10vh; }
-.eight svg:nth-child(2) { fill: #f1c40f; left: 85vw; top: 20vh; }
-.eight svg:nth-child(3) { fill: #ffffff; left: 15vw; top: 60vh; }
-.eight svg:nth-child(4) { fill: #e74c3c; left: 75vw; top: 80vh; }
-.eight svg:nth-child(5) { fill: #f1c40f; left: 40vw; top: 15vh; }
-
-.nine p {
-    font-size: 1.5rem;
-    font-weight: 300;
-}
-
+/* Tekrar Oynat */
 #replay {
     color: #f1c40f;
     cursor: pointer;
     text-decoration: underline;
+    font-size: 1.2rem;
 }
 
-/* Mobil Uyumluluk */
-@media screen and (max-width: 500px) {
-    .one { font-size: 2.5rem; }
-    .idea-6 span:first-child { font-size: 5rem; }
-    .six img { max-width: 180px; height: 180px; }
-    .wish-hbd { font-size: 2rem; }
+/* --- MOBİL UYUMLULUK (Responsive) --- */
+@media screen and (max-width: 600px) {
+    .one { font-size: 3rem; }
+    .two { font-size: 1.4rem; }
+    .three { font-size: 2.5rem; }
+    
+    .text-box p { font-size: 1.1rem; }
+    
+    .five p { font-size: 1.6rem; }
+    .idea-5 { font-size: 2.5rem !important; }
+    .idea-6 span:first-child { font-size: 6rem; }
+    .idea-6 span:last-child { font-size: 1.5rem; }
+    
+    .six img { width: 200px; height: 200px; }
+    .wish-hbd { font-size: 2.5rem; }
+}
+
+/* Siyah daireleri tamamen kapatan güvenlik kodu */
+.eight, .eight svg {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
 }
